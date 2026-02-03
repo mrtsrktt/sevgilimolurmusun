@@ -20,8 +20,10 @@ const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const buttonsBox = document.getElementById('buttonsBox');
 const fireworksLayer = document.getElementById('fireworksLayer');
+const confettiLayer = document.getElementById('confettiLayer');
 
 let fireworksTimer = null;
+let confettiTimer = null;
 let lastPos = { x: null, y: null };
 
 const noPhrases = [
@@ -158,6 +160,7 @@ yesBtn.addEventListener('click', function() {
     celebrationPage.classList.remove('hidden');
     window.scrollTo(0, 0);
     startFireworks();
+    startConfetti();
 });
 
 // Sayfa yüklendiğinde animasyon
@@ -220,4 +223,27 @@ function startFireworks() {
         createFirework('left');
         createFirework('right');
     }, 550);
+}
+
+function createConfettiPiece() {
+    if (!confettiLayer) return;
+    const confetti = document.createElement('div');
+    const size = 6 + Math.random() * 10;
+    confetti.className = `confetti ${Math.random() > 0.7 ? 'circle' : ''}`.trim();
+    confetti.style.width = `${size}px`;
+    confetti.style.height = `${size + 4}px`;
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.background = ['#ff4fa1', '#ffd166', '#ff8fab', '#c7f9cc', '#ffb3d9', '#ff6b6b'][Math.floor(Math.random() * 6)];
+    confetti.style.animationDuration = `${2 + Math.random() * 1.2}s, ${0.8 + Math.random() * 0.8}s`;
+    confettiLayer.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 2800);
+}
+
+function startConfetti() {
+    if (confettiTimer) return;
+    confettiTimer = setInterval(() => {
+        for (let i = 0; i < 12; i++) {
+            createConfettiPiece();
+        }
+    }, 450);
 }
