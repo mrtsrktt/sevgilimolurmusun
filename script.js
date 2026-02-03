@@ -22,6 +22,22 @@ const buttonsBox = document.getElementById('buttonsBox');
 const fireworksLayer = document.getElementById('fireworksLayer');
 
 let fireworksTimer = null;
+let lastPos = { x: null, y: null };
+
+const noPhrases = [
+    'HAYIR (Yakalamaya Çalış!)',
+    'HAYIR (Bence deneme 😄)',
+    'HAYIR (Nereye dokunuyorsun?)',
+    'HAYIR (Kaçıyorum!)',
+    'HAYIR (Acele et!)',
+    'HAYIR (Beni yakalayamazsın)',
+    'HAYIR (Hadi bakalım)',
+    'HAYIR (Çok yaklaştın!)',
+    'HAYIR (Şaka şaka 😅)',
+    'HAYIR (Yine mi?)',
+    'HAYIR (Üzgünüm 😜)',
+    'HAYIR (Kaçış modunda)'
+];
 
 // NO butonuna kaçma mantığı
 let escapeCount = 0;
@@ -37,7 +53,7 @@ function getSafePosition(containerRect, btnRect, avoidPoints) {
 
     let best = { x: Math.random() * maxX, y: Math.random() * maxY, score: -Infinity };
 
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 18; i++) {
         const x = Math.random() * maxX;
         const y = Math.random() * maxY;
         let minDist = Infinity;
@@ -49,8 +65,17 @@ function getSafePosition(containerRect, btnRect, avoidPoints) {
             minDist = Math.min(minDist, dist);
         });
 
-        if (minDist > best.score) {
-            best = { x, y, score: minDist };
+        let lastDist = 0;
+        if (lastPos.x !== null && lastPos.y !== null) {
+            const dx = x - lastPos.x;
+            const dy = y - lastPos.y;
+            lastDist = Math.sqrt(dx * dx + dy * dy);
+        }
+
+        const score = minDist + lastDist * 0.6;
+
+        if (score > best.score) {
+            best = { x, y, score };
         }
     }
 
@@ -79,14 +104,20 @@ function escapeButton(pointerX, pointerY) {
     }
 
     const pos = getSafePosition(containerRect, btnRect, avoidPoints);
+    lastPos = { x: pos.x, y: pos.y };
+
+    const phrase = noPhrases[escapeCount % noPhrases.length];
+    noBtn.textContent = phrase;
 
     noBtn.classList.add('escaping');
     noBtn.style.left = `${pos.x}px`;
     noBtn.style.top = `${pos.y}px`;
+    const tilt = (Math.random() * 14 - 7).toFixed(1);
+    noBtn.style.transform = `rotate(${tilt}deg)`;
 
     if (escapeCount > maxEscapes) {
         const scale = Math.max(0.3, 1 - (escapeCount - maxEscapes) * 0.05);
-        noBtn.style.transform = `scale(${scale})`;
+        noBtn.style.transform = `rotate(${tilt}deg) scale(${scale})`;
 
         if (scale < 0.5) {
             yesBtn.style.transform = 'scale(1.15)';
@@ -116,7 +147,7 @@ buttonsBox.addEventListener('pointermove', function(e) {
     const dy = e.clientY - (btnRect.top + btnRect.height / 2);
     const distance = Math.sqrt(dx * dx + dy * dy);
 
-    if (distance < 90) {
+    if (distance < 120) {
         escapeButton(e.clientX, e.clientY);
     }
 });
@@ -140,7 +171,7 @@ window.addEventListener('load', function() {
 function adjustContainerHeight() {
     const windowHeight = window.innerHeight;
     const minHeight = 150;
-    const maxHeight = Math.min(320, windowHeight * 0.45);
+    const maxHeight = Math.min(360, windowHeight * 0.55);
 
     buttonsBox.style.minHeight = `${minHeight}px`;
     buttonsBox.style.maxHeight = `${maxHeight}px`;

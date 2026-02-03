@@ -195,7 +195,7 @@ body::after {
 
 .btn-no.escaping {
     position: absolute !important;
-    transition: all 0.28s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.22s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 /* Celebration styles */
