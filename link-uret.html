@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Üretici | Sevgilimolurmusun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="generatorPage">
+        <div class="card generator">
+            <div class="brand">Sevgilimolurmusun</div>
+            <h1 class="name">Link Üretici</h1>
+            <p class="question">İsim ve mesajı gir, tek tıkla hazır linki kopyala.</p>
+
+            <div class="form">
+                <label class="field">
+                    <span>Sevdiğinin adı</span>
+                    <input type="text" id="nameInput" placeholder="Örn: Ayşe">
+                </label>
+
+                <label class="field">
+                    <span>Gönderen adı</span>
+                    <input type="text" id="fromInput" placeholder="Örn: Mehmet">
+                </label>
+
+                <label class="field">
+                    <span>Özel mesaj</span>
+                    <textarea id="msgInput" rows="3" placeholder="Örn: Bu yıl kalbimi sana verdim... ❤️"></textarea>
+                </label>
+            </div>
+
+            <div class="output">
+                <span>Hazır link</span>
+                <div class="output-row">
+                    <input type="text" id="linkOutput" readonly>
+                    <button class="btn btn-yes" id="copyBtn">Kopyala</button>
+                </div>
+                <p class="hint">Bu linki WhatsApp/DM ile gönder.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="link-uret.js"></script>
+</body>
+</html>

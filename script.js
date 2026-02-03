@@ -1,9 +1,27 @@
-// URL'den isim parametresini al
+﻿// URL'den parametreleri al
 const urlParams = new URLSearchParams(window.location.search);
-const name = urlParams.get('name') || 'Sevgilim';
+const name = (urlParams.get('name') || 'Sevgilim').trim();
+const from = (urlParams.get('from') || '').trim();
+const message = (urlParams.get('msg') || '').trim();
 
 // İsmi sayfaya yerleştir
-document.getElementById('name').textContent = name;
+const nameEl = document.getElementById('name');
+const fromEl = document.getElementById('fromText');
+const messageEl = document.getElementById('customMessage');
+
+nameEl.textContent = name;
+
+if (from) {
+    fromEl.textContent = `Sevgiyle, ${from}`;
+} else {
+    fromEl.textContent = '';
+}
+
+if (message) {
+    messageEl.textContent = message;
+} else {
+    messageEl.textContent = '';
+}
 
 // Sayfa elementleri
 const questionPage = document.getElementById('questionPage');
@@ -70,7 +88,6 @@ function escapeButton() {
 
 // YES butonuna tıklandığında
 yesBtn.addEventListener('click', function() {
-    // Confetti efekti (opsiyonel, sonra eklenebilir)
     celebrate();
     
     // Kutlama sayfasını göster

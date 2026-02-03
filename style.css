@@ -1,4 +1,4 @@
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,6 +32,20 @@ body {
     box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
     text-align: center;
     animation: fadeIn 0.6s ease-out;
+}
+
+.brand {
+    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e91e63;
+    padding: 6px 14px;
+    border: 1px solid #ffd1e6;
+    border-radius: 999px;
+    background: #fff5fb;
+    margin-bottom: 16px;
+    font-weight: 700;
 }
 
 @keyframes fadeIn {
@@ -85,6 +99,20 @@ body {
     background: #fff5f8;
     border-radius: 15px;
     border: 2px dashed #ffc0cb;
+}
+
+.from-line {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.custom-message {
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 .buttons {
@@ -303,4 +331,69 @@ body {
     .celebration-title {
         font-size: 2.5rem;
     }
+
+    .brand {
+        font-size: 0.75rem;
+    }
+}
+
+/* Link generator */
+.generator .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0 10px;
+    text-align: left;
+}
+
+.generator .field span {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.generator input,
+.generator textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #f2c1d6;
+    border-radius: 14px;
+    font-size: 1rem;
+    outline: none;
+    background: #fffafb;
+}
+
+.generator input:focus,
+.generator textarea:focus {
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.15);
+}
+
+.generator .output {
+    text-align: left;
+    margin-top: 16px;
+}
+
+.generator .output span {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.generator .output-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.generator #linkOutput {
+    flex: 1;
+}
+
+.generator .hint {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 8px;
 }
