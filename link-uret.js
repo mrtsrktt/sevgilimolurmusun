@@ -6,6 +6,7 @@ const shortOutput = document.getElementById('shortOutput');
 const copyBtn = document.getElementById('copyBtn');
 const shortBtn = document.getElementById('shortBtn');
 const shortHint = document.getElementById('shortHint');
+const generateBtn = document.getElementById('generateBtn');
 const addListBtn = document.getElementById('addListBtn');
 const exportBtn = document.getElementById('exportBtn');
 const clearBtn = document.getElementById('clearBtn');
@@ -35,6 +36,11 @@ function buildLink() {
 
 [nameInput, fromInput, msgInput].forEach((input) => {
     input.addEventListener('input', buildLink);
+});
+
+generateBtn.addEventListener('click', () => {
+    buildLink();
+    linkOutput.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
 copyBtn.addEventListener('click', async () => {
