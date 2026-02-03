@@ -19,6 +19,9 @@ const celebrationPage = document.getElementById('celebrationPage');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const buttonsBox = document.getElementById('buttonsBox');
+const fireworksLayer = document.getElementById('fireworksLayer');
+
+let fireworksTimer = null;
 
 // NO butonuna kaçma mantığı
 let escapeCount = 0;
@@ -123,6 +126,7 @@ yesBtn.addEventListener('click', function() {
     questionPage.classList.add('hidden');
     celebrationPage.classList.remove('hidden');
     window.scrollTo(0, 0);
+    startFireworks();
 });
 
 // Sayfa yüklendiğinde animasyon
@@ -144,3 +148,45 @@ function adjustContainerHeight() {
 
 adjustContainerHeight();
 window.addEventListener('resize', adjustContainerHeight);
+
+function createFirework(side) {
+    if (!fireworksLayer) return;
+
+    const firework = document.createElement('div');
+    firework.className = `firework ${side}`;
+    const top = 60 + Math.random() * 180;
+    firework.style.top = `${top}px`;
+
+    const offset = 6 + Math.random() * 14;
+    if (side === 'left') {
+        firework.style.left = `${offset}%`;
+    } else {
+        firework.style.right = `${offset}%`;
+    }
+
+    const sparkCount = 10 + Math.floor(Math.random() * 6);
+    for (let i = 0; i < sparkCount; i++) {
+        const spark = document.createElement('div');
+        spark.className = `spark ${i % 2 === 0 ? 'alt' : ''}`.trim();
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 40 + Math.random() * 50;
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        spark.style.setProperty('--x', `${x}px`);
+        spark.style.setProperty('--y', `${y}px`);
+        firework.appendChild(spark);
+    }
+
+    fireworksLayer.appendChild(firework);
+    setTimeout(() => {
+        firework.remove();
+    }, 1300);
+}
+
+function startFireworks() {
+    if (fireworksTimer) return;
+    fireworksTimer = setInterval(() => {
+        createFirework('left');
+        createFirework('right');
+    }, 900);
+}
