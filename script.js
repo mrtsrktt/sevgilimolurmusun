@@ -10,28 +10,87 @@ const fromEl = document.getElementById('fromText');
 const messageEl = document.getElementById('customMessage');
 
 nameEl.textContent = name;
-
-if (from) {
-    fromEl.textContent = `Sevgiyle, ${from}`;
-} else {
-    fromEl.textContent = '';
-}
-
-if (message) {
-    messageEl.textContent = message;
-} else {
-    messageEl.textContent = '';
-}
+fromEl.textContent = from ? `Sevgiyle, ${from}` : '';
+messageEl.textContent = message || '';
 
 // Sayfa elementleri
 const questionPage = document.getElementById('questionPage');
 const celebrationPage = document.getElementById('celebrationPage');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
+const buttonsBox = document.getElementById('buttonsBox');
 
 // NO butonuna kaçma mantığı
 let escapeCount = 0;
-const maxEscapes = 10; // 10 denemeden sonra NO butonu küçülmeye başlar
+const maxEscapes = 10;
+
+function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+}
+
+function getSafePosition(containerRect, btnRect, avoidPoints) {
+    const maxX = containerRect.width - btnRect.width;
+    const maxY = containerRect.height - btnRect.height;
+
+    let best = { x: Math.random() * maxX, y: Math.random() * maxY, score: -Infinity };
+
+    for (let i = 0; i < 12; i++) {
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+        let minDist = Infinity;
+
+        avoidPoints.forEach((p) => {
+            const dx = x - p.x;
+            const dy = y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            minDist = Math.min(minDist, dist);
+        });
+
+        if (minDist > best.score) {
+            best = { x, y, score: minDist };
+        }
+    }
+
+    return { x: clamp(best.x, 0, maxX), y: clamp(best.y, 0, maxY) };
+}
+
+function escapeButton(pointerX, pointerY) {
+    escapeCount++;
+
+    const containerRect = buttonsBox.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+    const yesRect = yesBtn.getBoundingClientRect();
+
+    const avoidPoints = [
+        {
+            x: yesRect.left - containerRect.left + yesRect.width / 2,
+            y: yesRect.top - containerRect.top + yesRect.height / 2
+        }
+    ];
+
+    if (typeof pointerX === 'number' && typeof pointerY === 'number') {
+        avoidPoints.push({
+            x: pointerX - containerRect.left,
+            y: pointerY - containerRect.top
+        });
+    }
+
+    const pos = getSafePosition(containerRect, btnRect, avoidPoints);
+
+    noBtn.classList.add('escaping');
+    noBtn.style.left = `${pos.x}px`;
+    noBtn.style.top = `${pos.y}px`;
+
+    if (escapeCount > maxEscapes) {
+        const scale = Math.max(0.3, 1 - (escapeCount - maxEscapes) * 0.05);
+        noBtn.style.transform = `scale(${scale})`;
+
+        if (scale < 0.5) {
+            yesBtn.style.transform = 'scale(1.15)';
+            yesBtn.style.boxShadow = '0 18px 36px rgba(233, 30, 99, 0.35)';
+        }
+    }
+}
 
 noBtn.addEventListener('mouseenter', function() {
     escapeButton();
@@ -39,7 +98,8 @@ noBtn.addEventListener('mouseenter', function() {
 
 noBtn.addEventListener('touchstart', function(e) {
     e.preventDefault();
-    escapeButton();
+    const touch = e.touches[0];
+    escapeButton(touch.clientX, touch.clientY);
 });
 
 noBtn.addEventListener('click', function(e) {
@@ -47,68 +107,26 @@ noBtn.addEventListener('click', function(e) {
     escapeButton();
 });
 
-function escapeButton() {
-    escapeCount++;
-    
-    // Container boyutlarını al
-    const container = document.querySelector('.buttons');
-    const containerRect = container.getBoundingClientRect();
-    
-    // Buton boyutlarını al
+buttonsBox.addEventListener('pointermove', function(e) {
     const btnRect = noBtn.getBoundingClientRect();
-    
-    // Rastgele pozisyon hesapla (container içinde)
-    const maxX = containerRect.width - btnRect.width;
-    const maxY = containerRect.height - btnRect.height;
-    
-    let randomX = Math.random() * maxX;
-    let randomY = Math.random() * maxY;
-    
-    // Negatif değerleri önle
-    randomX = Math.max(0, randomX);
-    randomY = Math.max(0, randomY);
-    
-    // Butonu absolute konuma getir ve hareket ettir
-    noBtn.classList.add('escaping');
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
-    
-    // Her denemede butonu biraz küçült
-    if (escapeCount > maxEscapes) {
-        const scale = Math.max(0.3, 1 - (escapeCount - maxEscapes) * 0.05);
-        noBtn.style.transform = `scale(${scale})`;
-        
-        // Çok küçüldüyse YES butonunu büyüt
-        if (scale < 0.5) {
-            yesBtn.style.transform = 'scale(1.2)';
-            yesBtn.style.animation = 'pulse 0.5s infinite';
-        }
+    const dx = e.clientX - (btnRect.left + btnRect.width / 2);
+    const dy = e.clientY - (btnRect.top + btnRect.height / 2);
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 90) {
+        escapeButton(e.clientX, e.clientY);
     }
-}
+});
 
 // YES butonuna tıklandığında
 yesBtn.addEventListener('click', function() {
-    celebrate();
-    
-    // Kutlama sayfasını göster
     questionPage.classList.add('hidden');
     celebrationPage.classList.remove('hidden');
-    
-    // Sayfayı en üste kaydır
     window.scrollTo(0, 0);
 });
 
-function celebrate() {
-    // Basit bir kutlama efekti - daha gelişmiş yapılabilir
-    document.body.style.animation = 'none';
-    setTimeout(() => {
-        document.body.style.animation = '';
-    }, 10);
-}
-
 // Sayfa yüklendiğinde animasyon
 window.addEventListener('load', function() {
-    // Başlangıç animasyonu
     setTimeout(() => {
         noBtn.style.transition = 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
     }, 100);
@@ -116,13 +134,12 @@ window.addEventListener('load', function() {
 
 // Responsive için container yüksekliğini ayarla
 function adjustContainerHeight() {
-    const buttonsContainer = document.querySelector('.buttons');
     const windowHeight = window.innerHeight;
     const minHeight = 150;
-    const maxHeight = Math.min(300, windowHeight * 0.4);
-    
-    buttonsContainer.style.minHeight = minHeight + 'px';
-    buttonsContainer.style.maxHeight = maxHeight + 'px';
+    const maxHeight = Math.min(320, windowHeight * 0.45);
+
+    buttonsBox.style.minHeight = `${minHeight}px`;
+    buttonsBox.style.maxHeight = `${maxHeight}px`;
 }
 
 adjustContainerHeight();

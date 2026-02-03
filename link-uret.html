@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Üretici | Sevgilimolurmusun</title>
+    <meta name="description" content="Sevgilimolurmusun link üretici. İsim ve mesajı gir, tek tıkla kopyala.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container" id="generatorPage">
@@ -36,7 +40,45 @@
                     <input type="text" id="linkOutput" readonly>
                     <button class="btn btn-yes" id="copyBtn">Kopyala</button>
                 </div>
+                <div class="actions">
+                    <button class="btn btn-no" id="addListBtn">Listeye Ekle</button>
+                </div>
                 <p class="hint">Bu linki WhatsApp/DM ile gönder.</p>
+            </div>
+
+            <div class="shortener">
+                <span>Kısa link</span>
+                <div class="short-row">
+                    <input type="text" id="shortOutput" readonly placeholder="Kısa link üret">
+                    <button class="btn btn-yes" id="shortBtn">Kısa Link</button>
+                </div>
+                <p class="hint" id="shortHint">Tek tıkla kısa link üretir. Gerekirse yeni sekmede açılır.</p>
+            </div>
+
+            <div class="list">
+                <span>Sipariş listesi</span>
+                <table class="list-table" id="listTable">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>İsim</th>
+                            <th>Gönderen</th>
+                            <th>Mesaj</th>
+                            <th>Link</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listBody">
+                        <tr>
+                            <td colspan="6">Henüz kayıt yok.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="actions">
+                    <button class="btn btn-no" id="exportBtn">CSV Dışa Aktar</button>
+                    <button class="btn btn-no" id="clearBtn">Listeyi Temizle</button>
+                </div>
+                <p class="hint">Liste tarayıcıda saklanır. Tarayıcı verilerini silersen sıfırlanır.</p>
             </div>
         </div>
     </div>
