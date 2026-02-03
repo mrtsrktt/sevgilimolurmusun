@@ -185,22 +185,22 @@ function createFirework(side) {
 
     const firework = document.createElement('div');
     firework.className = `firework ${side}`;
-    const top = 60 + Math.random() * 180;
+    const top = 40 + Math.random() * 220;
     firework.style.top = `${top}px`;
 
-    const offset = 6 + Math.random() * 14;
+    const offset = 4 + Math.random() * 18;
     if (side === 'left') {
         firework.style.left = `${offset}%`;
     } else {
         firework.style.right = `${offset}%`;
     }
 
-    const sparkCount = 10 + Math.floor(Math.random() * 6);
+    const sparkCount = 16 + Math.floor(Math.random() * 8);
     for (let i = 0; i < sparkCount; i++) {
         const spark = document.createElement('div');
         spark.className = `spark ${i % 2 === 0 ? 'alt' : ''}`.trim();
         const angle = Math.random() * Math.PI * 2;
-        const distance = 40 + Math.random() * 50;
+        const distance = 70 + Math.random() * 70;
         const x = Math.cos(angle) * distance;
         const y = Math.sin(angle) * distance;
         spark.style.setProperty('--x', `${x}px`);
@@ -219,5 +219,5 @@ function startFireworks() {
     fireworksTimer = setInterval(() => {
         createFirework('left');
         createFirework('right');
-    }, 900);
+    }, 550);
 }

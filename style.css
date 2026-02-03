@@ -258,76 +258,76 @@ body::after {
 
 .love-animation {
     position: relative;
-    height: 100px;
+    height: 130px;
     margin: 20px 0;
     z-index: 1;
 }
 
 .heart-float {
     position: absolute;
-    font-size: 2rem;
-    animation: floatUp 3.2s infinite, heartPulse 2.2s infinite;
+    font-size: 2.4rem;
+    animation: floatUp 2s infinite, heartPulse 1.2s infinite;
     left: 50%;
 }
 
 .heart-float:nth-child(1) {
     animation-delay: 0s;
     left: 8%;
-    font-size: 1.6rem;
-}
-
-.heart-float:nth-child(2) {
-    animation-delay: 0.4s;
-    left: 22%;
-    font-size: 2.2rem;
-}
-
-.heart-float:nth-child(3) {
-    animation-delay: 0.8s;
-    left: 38%;
     font-size: 1.9rem;
 }
 
+.heart-float:nth-child(2) {
+    animation-delay: 0.2s;
+    left: 22%;
+    font-size: 2.6rem;
+}
+
+.heart-float:nth-child(3) {
+    animation-delay: 0.4s;
+    left: 38%;
+    font-size: 2.2rem;
+}
+
 .heart-float:nth-child(4) {
-    animation-delay: 1.2s;
+    animation-delay: 0.6s;
     left: 52%;
-    font-size: 2.4rem;
+    font-size: 2.8rem;
 }
 
 .heart-float:nth-child(5) {
-    animation-delay: 1.6s;
+    animation-delay: 0.8s;
     left: 67%;
-    font-size: 1.8rem;
-}
-
-.heart-float:nth-child(6) {
-    animation-delay: 2s;
-    left: 82%;
     font-size: 2.1rem;
 }
 
+.heart-float:nth-child(6) {
+    animation-delay: 1s;
+    left: 82%;
+    font-size: 2.5rem;
+}
+
 .heart-float:nth-child(7) {
-    animation-delay: 2.4s;
+    animation-delay: 1.2s;
     left: 92%;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .heart-float:nth-child(8) {
-    animation-delay: 2.8s;
+    animation-delay: 1.4s;
     left: 28%;
-    font-size: 1.7rem;
+    font-size: 2.2rem;
 }
 
 @keyframes floatUp {
     0% {
-        transform: translateY(10px) scale(0.3) rotate(-6deg);
+        transform: translateY(20px) scale(0.3) rotate(-8deg);
         opacity: 0;
     }
     50% {
         opacity: 1;
     }
     100% {
-        transform: translateY(-120px) scale(1.1) rotate(8deg);
+        transform: translateY(-150px) scale(1.25) rotate(10deg);
         opacity: 0;
     }
 }
@@ -353,12 +353,12 @@ body::after {
 /* Fireworks */
 .firework {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: transparent;
     pointer-events: none;
-    animation: fireworkUp 1.2s ease-out forwards;
+    animation: fireworkUp 1s ease-out forwards;
 }
 
 .firework.left {
@@ -371,35 +371,35 @@ body::after {
 
 .spark {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: #ff5aa7;
+    background: #ff3f8a;
     transform: translate(-50%, -50%);
-    animation: sparkBurst 1.2s ease-out forwards;
+    animation: sparkBurst 1s ease-out forwards;
 }
 
 .spark.alt {
-    background: #ffb6d9;
+    background: #ffc1df;
 }
 
 @keyframes fireworkUp {
     0% {
-        transform: translateY(40px);
+        transform: translateY(60px) scale(0.6);
         opacity: 0;
     }
     30% {
         opacity: 1;
     }
     100% {
-        transform: translateY(-40px);
+        transform: translateY(-60px) scale(1.15);
         opacity: 0;
     }
 }
 
 @keyframes sparkBurst {
     0% {
-        transform: translate(-50%, -50%) scale(0.4);
+        transform: translate(-50%, -50%) scale(0.6);
         opacity: 1;
     }
     100% {
