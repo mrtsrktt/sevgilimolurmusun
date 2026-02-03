@@ -3,65 +3,370 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sevgilim Olur musun? 💖</title>
-    <meta name="description" content="Sevgililer Günü'ne özel eğlenceli ve romantik sürpriz sayfa. Sevdiğine özel bir link gönder!">
-    <meta property="og:title" content="Sevgilim Olur musun?">
-    <meta property="og:description" content="Sevdiğine özel bir link gönder, evet demekten kaçamasın!">
+    <title>Özel Hediye | Anılar Hayat Buluyor</title>
+    <meta name="description" content="Geçmişin anılarını hissedin, sevdiğinizin gülüşünü yeniden yaşayın. Fotoğrafları unutulmaz videolara dönüştürüyoruz.">
+    <meta property="og:title" content="Özel Hediye | Anılar Hayat Buluyor">
+    <meta property="og:description" content="Geçmişin anılarını hissedin, sevdiğinizin gülüşünü yeniden yaşayın.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="/og-image.svg">
-    <meta property="og:url" content="https://sevgilimolurmusun.vercel.app/">
+    <meta property="og:url" content="https://ozel-hediye.com/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sevgilim Olur musun?">
-    <meta name="twitter:description" content="Sevdiğine özel bir link gönder, evet demekten kaçamasın!">
+    <meta name="twitter:title" content="Özel Hediye | Anılar Hayat Buluyor">
+    <meta name="twitter:description" content="Geçmişin anılarını hissedin, sevdiğinizin gülüşünü yeniden yaşayın.">
     <meta name="twitter:image" content="/og-image.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="container" id="questionPage">
-        <div class="card">
-            <div class="brand">Sevgilimolurmusun</div>
-            <h1 class="name" id="name">Sevgilim</h1>
-            <p class="question">Sana çok özel bir sorum var... 💭</p>
-            <p class="main-question">Bu Sevgililer Günü'nde<br>Sevgilim olur musun? ❤️</p>
-            <p class="game-hint">🎮 Küçük bir oyun:<br>"Hayır" butonuna basmayı deneyebilirsin,<br>ama başarabilir misin bakalım? 😏</p>
-            <p class="from-line" id="fromText"></p>
-            <p class="custom-message" id="customMessage"></p>
-            
-            <div class="buttons" id="buttonsBox">
-                <button class="btn btn-yes" id="yesBtn">TABİİ Kİ EVET! 😍</button>
-                <button class="btn btn-no" id="noBtn">HAYIR (Şansını Dene!)</button>
+<body class="site-body">
+    <div class="site-bg"></div>
+    <header class="site-header">
+        <div class="site-shell">
+            <div class="logo">Anılar Hayat Buluyor</div>
+            <nav class="site-nav">
+                <a href="#urunler">Ürünler</a>
+                <a href="#nasil">Nasıl Çalışır</a>
+                <a href="#siparis">Sipariş</a>
+                <a href="#sss">SSS</a>
+            </nav>
+            <a class="cta" href="#siparis">Hemen Sipariş Ver</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="site-shell hero-grid">
+                <div class="hero-copy">
+                    <span class="pill">ozel-hediye.com</span>
+                    <h1>Geçmişin anılarını hissedin, sevdiğinizin gülüşünü yeniden yaşayın.</h1>
+                    <p>Fotoğraflarınızı duygusal videolara dönüştürüyoruz. Doğum günü, aile, anma ve özel günler için kişiye özel tasarımlar.</p>
+                    <div class="hero-actions">
+                        <a class="cta" href="#urunler">Ürünleri Gör</a>
+                        <a class="ghost" href="link-uret.html">Sevgilim Olur musun? Linki</a>
+                    </div>
+                    <div class="hero-note">
+                        <span>⏱️ Ortalama teslim: 24-48 saat</span>
+                        <span>🎬 HD video + kişiye özel yazı</span>
+                        <span>💳 Online ödeme ile hızlı sipariş</span>
+                    </div>
+                </div>
+                <div class="hero-cards">
+                    <div class="memory-card">
+                        <div class="memory-title">Dede–Torun Buluşması</div>
+                        <div class="polaroid">
+                            <div class="polaroid-photo"></div>
+                            <div class="polaroid-caption">Eski kareler + yeni fotoğraf</div>
+                            <div class="tape"></div>
+                        </div>
+                        <div class="memory-meta">✨ En çok tercih edilen</div>
+                    </div>
+                    <div class="memory-card">
+                        <div class="memory-title">Çocukluğunla Doğum Günü</div>
+                        <div class="polaroid">
+                            <div class="polaroid-photo alt"></div>
+                            <div class="polaroid-caption">Nostaljik kolaj</div>
+                            <div class="tape"></div>
+                        </div>
+                        <div class="memory-meta">💖 Duygusal sürpriz</div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <section class="section" id="urunler">
+            <div class="site-shell">
+                <div class="section-head">
+                    <h2>Öne Çıkan Ürünler</h2>
+                    <p>10 demo ürün hazır. Dilediğiniz başlık ve fiyatlarla güncelleyeceğiz.</p>
+                </div>
+                <div class="product-grid">
+                    <article class="product">
+                        <div class="product-title">Dede–Torun Buluşması</div>
+                        <div class="product-frame">
+                            <div class="product-photo"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Eski fotoğrafları duygusal bir buluşma videosuna çeviriyoruz.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺349</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Anne ve Çocukluk Doğum Günü</div>
+                        <div class="product-frame">
+                            <div class="product-photo alt"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Anne-çocuk kareleriyle sıcak bir doğum günü klibi.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺379</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Çocukluğunla Doğum Günü</div>
+                        <div class="product-frame">
+                            <div class="product-photo"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Çocukluk kareleri + bugünün fotoğrafı aynı videoda.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺399</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Cumhuriyet Bayramı Kutlaması</div>
+                        <div class="product-frame">
+                            <div class="product-photo alt"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Özel gün mesajlarını arşiv görüntüleriyle birleştir.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺299</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Zamanı Geri Sar</div>
+                        <div class="product-frame">
+                            <div class="product-photo"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Eski albümlerden gelen karelerle duygusal kolaj.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺329</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Yanımda Kalsaydın</div>
+                        <div class="product-frame">
+                            <div class="product-photo alt"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Anma ve özel hatıralar için hassas hazırlanmış video.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺349</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Gelecekteki Çocuğunuz</div>
+                        <div class="product-frame">
+                            <div class="product-photo"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Çift fotoğraflarından hayal dolu bir sürpriz kurgusu.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺429</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Anneler Günü Anısı</div>
+                        <div class="product-frame">
+                            <div class="product-photo alt"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Anneye özel mesajlar ve fotoğraflarla duygusal klip.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺359</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Babalar Günü Sürprizi</div>
+                        <div class="product-frame">
+                            <div class="product-photo"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Baba ve çocuk fotoğraflarıyla hazırlanan kısa video.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺359</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                    <article class="product">
+                        <div class="product-title">Sevgililer Günü Mesajı</div>
+                        <div class="product-frame">
+                            <div class="product-photo alt"></div>
+                            <div class="product-tape"></div>
+                        </div>
+                        <p>Romantik mesajlar ve fotoğraflarla sıcak bir sürpriz.</p>
+                        <div class="product-actions">
+                            <span class="tag">₺319</span>
+                            <a class="ghost" href="#siparis">Sipariş Ver</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section highlight">
+            <div class="site-shell split">
+                <div>
+                    <h2>Sevgilim Olur musun? 💖</h2>
+                    <p>Sevdiğine interaktif bir sürpriz sayfa gönder. İster link üret, ister doğrudan paylaş.</p>
+                    <div class="split-actions">
+                        <a class="cta" href="sevgilim-olurmusun.html">Sürprizi Aç</a>
+                        <a class="ghost" href="link-uret.html">Özel Link Üret</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-title">İnteraktif Sürpriz</div>
+                    <ul class="feature-list">
+                        <li>İsme özel link</li>
+                        <li>Kaçan "Hayır" butonu</li>
+                        <li>Paylaşmaya hazır</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="nasil">
+            <div class="site-shell">
+                <div class="section-head">
+                    <h2>Nasıl Çalışır?</h2>
+                    <p>3 adımda siparişini tamamla. Fotoğrafların güvenle işlenir.</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-no">1</span>
+                        <h3>Fotoğrafları Yükle</h3>
+                        <p>En az 5 fotoğraf seç, özel notunu yaz.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-no">2</span>
+                        <h3>Ödeme Tamamla</h3>
+                        <p>Online ödeme ile siparişini güvenle bitir.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-no">3</span>
+                        <h3>Videon Hazır</h3>
+                        <p>24-48 saat içinde HD video teslim.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section order" id="siparis">
+            <div class="site-shell order-grid">
+                <div>
+                    <h2>Sipariş Formu</h2>
+                    <p>Fotoğraflarını yükle, videoda yazılacak cümleyi gir. Ödeme adımıyla siparişin tamamlanır.</p>
+                    <div class="order-note">
+                        <strong>Online sipariş akışı aktif.</strong>
+                        <span>Bilgileriniz güvenle saklanır ve yalnızca sipariş için kullanılır.</span>
+                    </div>
+                </div>
+                <form class="order-form" id="orderForm">
+                    <label>
+                        Ürün seçimi
+                        <select name="product" required>
+                            <option value="">Ürün seç</option>
+                            <option>Dede–Torun Buluşması</option>
+                            <option>Anne ve Çocukluk Doğum Günü</option>
+                            <option>Çocukluğunla Doğum Günü</option>
+                            <option>Cumhuriyet Bayramı Kutlaması</option>
+                            <option>Zamanı Geri Sar</option>
+                            <option>Yanımda Kalsaydın</option>
+                            <option>Gelecekteki Çocuğunuz</option>
+                            <option>Anneler Günü Anısı</option>
+                            <option>Babalar Günü Sürprizi</option>
+                            <option>Sevgililer Günü Mesajı</option>
+                        </select>
+                    </label>
+                    <label>
+                        Fotoğraflar (çoklu seçim)
+                        <input type="file" name="photos" accept="image/*" multiple required>
+                        <span class="file-hint" id="fileHint">Henüz fotoğraf seçilmedi.</span>
+                    </label>
+                    <label>
+                        Videoda yazacak cümle
+                        <textarea name="message" rows="3" placeholder="Örn: İyi ki doğdun, seni çok seviyorum." required></textarea>
+                    </label>
+                    <label>
+                        Teslim tarihi (opsiyonel)
+                        <input type="date" name="delivery">
+                    </label>
+                    <label>
+                        Ad Soyad
+                        <input type="text" name="fullname" placeholder="Örn: Ayşe Yılmaz" required>
+                    </label>
+                    <label>
+                        Telefon
+                        <input type="tel" name="phone" placeholder="Örn: 05xx xxx xx xx" required>
+                    </label>
+                    <label>
+                        E-posta
+                        <input type="email" name="email" placeholder="ornek@mail.com" required>
+                    </label>
+                    <button type="submit" class="cta">Ödemeye Geç</button>
+                    <p class="form-hint">Sipariş özetin oluşturulur ve ödeme adımına geçilir.</p>
+                </form>
+            </div>
+        </section>
+
+        <section class="section" id="sss">
+            <div class="site-shell">
+                <div class="section-head">
+                    <h2>Sık Sorulan Sorular</h2>
+                    <p>Merak ettiklerini hızlıca yanıtladık.</p>
+                </div>
+                <div class="faq">
+                    <details open>
+                        <summary>Kaç fotoğraf göndermeliyim?</summary>
+                        <p>Minimum 5, ideal 10-15 fotoğraf yeterli. Video süresine göre artırılabilir.</p>
+                    </details>
+                    <details>
+                        <summary>Teslim süresi nedir?</summary>
+                        <p>Standart teslim 24-48 saattir. Yoğun dönemlerde bilgi verilir.</p>
+                    </details>
+                    <details>
+                        <summary>Ödeme nasıl yapılacak?</summary>
+                        <p>Online ödeme ile güvenli şekilde tamamlanır. Ödeme sayfası sipariş sonunda açılır.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-shell footer-grid">
+            <div>
+                <div class="logo">Anılar Hayat Buluyor</div>
+                <p>Özel anıları ölümsüzleştiriyoruz. Dijital ve fiziki kişiye özel hediyeler.</p>
+            </div>
+            <div>
+                <div class="footer-title">İletişim</div>
+                <p>WhatsApp: <strong>+90 5xx xxx xx xx</strong></p>
+                <p>E-posta: <strong>iletisim@ozel-hediye.com</strong></p>
+            </div>
+            <div>
+                <div class="footer-title">Hızlı Linkler</div>
+                <a href="sevgilim-olurmusun.html">Sevgilim Olur musun?</a>
+                <a href="link-uret.html">Link Üretici</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="checkoutModal" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-title">Sipariş Özeti</div>
+            <div class="modal-body" id="checkoutSummary"></div>
+            <div class="modal-actions">
+                <button class="ghost" type="button" id="cancelCheckout">Vazgeç</button>
+                <button class="cta" type="button" id="confirmCheckout">Ödemeyi Tamamla</button>
+            </div>
+            <p class="modal-note" id="checkoutNote">Ödeme sayfasına yönlendiriliyorsunuz.</p>
         </div>
     </div>
 
-    <div class="container hidden" id="celebrationPage">
-        <div class="card celebration">
-            <div class="glow-layer"></div>
-            <div class="confetti-layer" id="confettiLayer"></div>
-            <div class="fireworks-layer" id="fireworksLayer"></div>
-            <div class="hearts">💖</div>
-            <h1 class="celebration-title">YAAAY!!! 💖</h1>
-            <div class="hearts">💖</div>
-            <p class="celebration-text">En güzel karar 😘</p>
-            
-            <div class="love-animation">
-                <div class="heart-float">❤️</div>
-                <div class="heart-float">💖</div>
-                <div class="heart-float">💘</div>
-                <div class="heart-float">💗</div>
-                <div class="heart-float">💓</div>
-                <div class="heart-float">💝</div>
-                <div class="heart-float">💕</div>
-                <div class="heart-float">💞</div>
-            </div>
-            
-            <p class="love-message">Seni seviyorum ❤️</p>
-        </div>
-    </div>
+    <div class="toast" id="checkoutToast">Siparişiniz alındı. Ödeme işlemi tamamlandı.</div>
 
-    <script src="script.js"></script>
+    <script src="order.js"></script>
 </body>
 </html>

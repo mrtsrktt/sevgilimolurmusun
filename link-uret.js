@@ -15,8 +15,7 @@ const listBody = document.getElementById('listBody');
 const STORAGE_KEY = 'solm_orders';
 
 function getBaseUrl() {
-    const base = new URL('./', window.location.href);
-    return base.toString();
+    return new URL('sevgilim-olurmusun.html', window.location.href).toString();
 }
 
 function buildLink() {
